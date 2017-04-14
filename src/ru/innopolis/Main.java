@@ -1,8 +1,16 @@
 package ru.innopolis;
 
+import ru.innopolis.conf.DB;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+
+        DB db = new DB();
+
+        db.initConnection();
+
+        db.get();
+
     }
 }
