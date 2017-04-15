@@ -5,10 +5,10 @@ package ru.innopolis.models;
  */
 
 public class Lesson {
-    int id;
-    String title;
-    String content;
-    int courseId;
+    private int id;
+    private String title;
+    private String content;
+    private int courseId;
 
     public Lesson(int id, String title, String content, int courseId) {
         this.id = id;

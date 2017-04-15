@@ -1,9 +1,8 @@
 package ru.innopolis;
 
-import ru.innopolis.models.Comment;
-import ru.innopolis.models.Course;
-import ru.innopolis.models.Lesson;
-import ru.innopolis.models.User;
+import ru.innopolis.models.*;
+
+import java.applet.Applet;
 
 public class Main {
 
@@ -13,25 +12,22 @@ public class Main {
         //db.initConnection();
         //db.get();
 
-        User ak = new User(1, "Антон", "Кузнецов", "ak@mail.ru", "123456", 1);
-        User av = new User(2, "Александра", "Воробьёва", "av@mail.ru", "987654", 2);
+        Application app = new Application();
 
-        Course course = new Course(1, "Основы Java", "Вы узнаете много нового", 1);
+        app.addUser(1, "Антон", "Кузнецов", "ak@mail.ru", "123456", 1);
+        app.addUser(2, "Александра", "Воробьёва", "av@mail.ru", "987654", 2);
 
-        Lesson l1 = new Lesson(1, "История и развитие языка Java", "Lorem ipsum", 1);
-        Lesson l2 = new Lesson(1, "Краткий обзор Java", "Dolor sit amet", 1);
+        app.addCourse(1, "Основы Java", "Вы узнаете много нового", 1);
 
-        Comment c1 = new Comment(1, "Очень полезный курс", 2, 1);
+        app.addLesson(1, "История и развитие языка Java", "Lorem ipsum", 1);
+        app.addLesson(2, "Краткий обзор Java", "Dolor sit amet", 1);
 
-        System.out.println(ak);
-        System.out.println(av);
-        System.out.println();
-        System.out.println(course);
-        System.out.println();
-        System.out.println(l1);
-        System.out.println(l2);
-        System.out.println();
-        System.out.println(c1);
+        app.addComment(1, "Очень полезный курс", 2, 1);
+
+        System.out.println(app.getUsers());
+        System.out.println(app.getCourses());
+        System.out.println(app.getLessons());
+        System.out.println(app.getComments());
 
     }
 }

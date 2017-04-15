@@ -5,16 +5,16 @@ package ru.innopolis.models;
  */
 
 public class Course {
-    int id;
-    String title;
-    String description;
-    int authorId;
+    private int id;
+    private String title;
+    private String description;
+    private int authorId;
 
-    public Course(int id, String title, String description, int aithorId) {
+    public Course(int id, String title, String description, int authorId) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.authorId = aithorId;
+        this.authorId = authorId;
     }
 
     public int getId() {

@@ -5,19 +5,19 @@ package ru.innopolis.models;
  */
 
 public class User {
-    int id;
-    String name;
-    String lastName;
-    String email;
-    String passoword;
-    int group;
+    private int id;
+    private String name;
+    private String lastName;
+    private String email;
+    private String passoword;
+    private int group;
 
-    public User(int id, String name, String lastName, String email, String passoword, int group) {
+    public User(int id, String name, String lastName, String email, String password, int group) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
-        this.passoword = passoword;
+        this.passoword = password;
         this.group = group;
     }
 

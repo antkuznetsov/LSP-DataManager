@@ -5,10 +5,10 @@ package ru.innopolis.models;
  */
 
 public class Comment {
-    int id;
-    String content;
-    int authorId;
-    int courseId;
+    private int id;
+    private String content;
+    private int authorId;
+    private int courseId;
 
     public Comment(int id, String content, int authorId, int courseId) {
         this.id = id;
