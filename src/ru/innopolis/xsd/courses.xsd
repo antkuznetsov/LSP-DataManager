@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<br:schema xmlns:br="http://www.w3.org/2001/XMLSchema">
+	<br:element name="courses">
+		<br:complexType>
+			<br:sequence>
+				<br:element name="course">
+					<br:complexType>
+						<br:sequence>
+							<br:element name="id" type="br:integer"/>
+							<br:element name="title" type="br:string"/>
+							<br:element name="description" type="br:string"/>
+							<br:element name="author_id" type="br:integer"/>
+						</br:sequence>
+					</br:complexType>
+				</br:element>
+			</br:sequence>
+		</br:complexType>
+	</br:element>		
+</br:schema>
