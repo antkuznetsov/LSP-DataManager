@@ -34,6 +34,13 @@ public class Courses {
         return courses;
     }
 
+    public Courses importCourses() throws JAXBException {
+        JaxbParser parser = new JaxbParser();
+        File file = new File("data/" + this.getClass().getSimpleName() + ".xml");
+        Courses tempCourses = (Courses) parser.getObject(file, this.getClass());
+        return tempCourses;
+    }
+
     public void exportCourses() throws JAXBException {
         JaxbParser parser = new JaxbParser();
         File f = new File("data/" + this.getClass().getSimpleName() + ".xml");

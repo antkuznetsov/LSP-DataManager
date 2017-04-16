@@ -34,6 +34,13 @@ public class Comments {
         return comments;
     }
 
+    public Comments importComments() throws JAXBException {
+        JaxbParser parser = new JaxbParser();
+        File file = new File("data/" + this.getClass().getSimpleName() + ".xml");
+        Comments tempComments = (Comments) parser.getObject(file, this.getClass());
+        return tempComments;
+    }
+
     public void exportComments() throws JAXBException {
         JaxbParser parser = new JaxbParser();
         File f = new File("data/" + this.getClass().getSimpleName() + ".xml");

@@ -52,8 +52,11 @@ public class Application {
         return this.comments.getComments();
     }
 
-    public void importData() {
-
+    public void importData() throws JAXBException {
+        this.users = this.users.importUsers();
+        this.courses = this.courses.importCourses();
+        this.lessons = this.lessons.importLessons();
+        this.comments = this.comments.importComments();
     }
 
     public void exportData() throws JAXBException {

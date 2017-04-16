@@ -9,9 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Kuznetsov on 16/04/2017.
@@ -36,14 +34,17 @@ public class Users {
         return users;
     }
 
-    public void usersImport() {
-
+    public Users importUsers() throws JAXBException {
+        JaxbParser parser = new JaxbParser();
+        File file = new File("data/" + this.getClass().getSimpleName() + ".xml");
+        Users tempUsers = (Users) parser.getObject(file, this.getClass());
+        return tempUsers;
     }
 
     public void exportUsers() throws JAXBException {
         JaxbParser parser = new JaxbParser();
-        File f = new File("data/" + this.getClass().getSimpleName() + ".xml");
-        parser.saveObject(f, this);
+        File file = new File("data/" + this.getClass().getSimpleName() + ".xml");
+        parser.saveObject(file, this);
     }
 
 }

@@ -1,6 +1,11 @@
 package ru.innopolis;
 
+import ru.innopolis.models.User;
+import ru.innopolis.models.Users;
+import ru.innopolis.utils.JaxbParser;
+
 import javax.xml.bind.JAXBException;
+import java.io.File;
 
 public class Main {
 
@@ -28,6 +33,15 @@ public class Main {
         System.out.println(app.getComments());
 
         app.exportData();
+
+        System.out.println("---");
+
+        Application app2 = new Application();
+        app2.importData();
+        System.out.println(app2.getUsers());
+        System.out.println(app2.getCourses());
+        System.out.println(app2.getLessons());
+        System.out.println(app2.getComments());
 
     }
 
