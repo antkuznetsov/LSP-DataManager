@@ -1,9 +1,13 @@
 package ru.innopolis.models;
 
+import ru.innopolis.utils.JaxbParser;
+
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +32,12 @@ public class Comments {
 
     public List<Comment> getComments() {
         return comments;
+    }
+
+    public void exportComments() throws JAXBException {
+        JaxbParser parser = new JaxbParser();
+        File f = new File("data/" + this.getClass().getSimpleName() + ".xml");
+        parser.saveObject(f, this);
     }
 
 }
