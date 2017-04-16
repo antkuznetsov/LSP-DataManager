@@ -28,7 +28,7 @@ public class JaxbParser implements Parser {
 
         JAXBContext context = JAXBContext.newInstance(o.getClass());
         Marshaller marshaller = context.createMarshaller();
-        marshaller.marshal(o,file);
+        marshaller.marshal(o, file);
 
     }
 
