@@ -1,9 +1,15 @@
 package ru.innopolis.models;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by Kuznetsov on 13/04/2017.
  */
 
+@XmlRootElement(name = "comment")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Comment {
     private int id;
     private String content;
@@ -15,6 +21,13 @@ public class Comment {
         this.content = content;
         this.authorId = authorId;
         this.courseId = courseId;
+    }
+
+    public Comment() {
+        this.id = -1;
+        this.content = null;
+        this.authorId = -1;
+        this.courseId = -1;
     }
 
     public int getId() {

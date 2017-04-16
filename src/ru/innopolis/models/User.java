@@ -1,15 +1,21 @@
 package ru.innopolis.models;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by Kuznetsov on 13/04/2017.
  */
 
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User {
     private int id;
     private String name;
     private String lastName;
     private String email;
-    private String passoword;
+    private String password;
     private int group;
 
     public User(int id, String name, String lastName, String email, String password, int group) {
@@ -17,8 +23,17 @@ public class User {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
-        this.passoword = password;
+        this.password = password;
         this.group = group;
+    }
+
+    public User() {
+        this.id = -1;
+        this.name = null;
+        this.lastName = null;
+        this.email = null;
+        this.password = null;
+        this.group = -1;
     }
 
     public int getId() {
@@ -53,12 +68,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassoword() {
-        return passoword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassoword(String passoword) {
-        this.passoword = passoword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getGroup() {
@@ -94,7 +109,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", passoword='" + passoword + '\'' +
+                ", password='" + password + '\'' +
                 ", group=" + group +
                 '}';
     }
