@@ -1,11 +1,6 @@
 package ru.innopolis;
 
-import ru.innopolis.models.User;
-import ru.innopolis.models.Users;
-import ru.innopolis.utils.JaxbParser;
-
 import javax.xml.bind.JAXBException;
-import java.io.File;
 
 public class Main {
 
