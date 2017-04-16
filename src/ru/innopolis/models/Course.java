@@ -54,12 +54,12 @@ public class Course {
         this.description = description;
     }
 
-    public int getAithorId() {
+    public int getAuthorId() {
         return authorId;
     }
 
-    public void setAithorId(int aithorId) {
-        this.authorId = aithorId;
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 
     @Override

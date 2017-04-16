@@ -3,6 +3,7 @@ package ru.innopolis;
 import ru.innopolis.models.*;
 
 import javax.xml.bind.JAXBException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -52,18 +53,41 @@ public class Application {
         return this.comments.getComments();
     }
 
-    public void importData() throws JAXBException {
+    public void importDataFromXML() throws JAXBException {
         this.users = this.users.importUsers();
         this.courses = this.courses.importCourses();
         this.lessons = this.lessons.importLessons();
         this.comments = this.comments.importComments();
     }
 
-    public void exportData() throws JAXBException {
+    public void exportDataToXML() throws JAXBException {
         this.users.exportUsers();
         this.courses.exportCourses();
         this.lessons.exportLessons();
         this.comments.exportComments();
     }
 
+    public void importDataFromDB() throws SQLException {
+        this.users.importUsersDB();
+        this.courses.importCoursesDB();
+        this.lessons.importLessonsDB();
+        this.comments.importCommentsDB();
+    }
+
+    public void exportDataToDB() throws SQLException {
+        this.users.exportUsersDB();
+        this.courses.exportCoursesDB();
+        this.lessons.exportLessonsDB();
+        this.comments.exportCommentsDB();
+    }
+
+    public void XML2DB() throws JAXBException, SQLException {
+        importDataFromXML();
+        exportDataToDB();
+    }
+
+    public void DB2XML() throws JAXBException, SQLException {
+        importDataFromDB();
+        exportDataToXML();
+    }
 }

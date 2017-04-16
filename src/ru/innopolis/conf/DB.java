@@ -8,9 +8,9 @@ import java.sql.*;
 
 public class DB {
 
-    private String dbName = "lsp-1";
-    private String dbLogin = "postgres";
-    private String dbPassword = "786952na";
+    private final String DBNAME = "lsp-1";
+    private final String DBLOGIN = "postgres";
+    private final String DBPASSWORD = "786952na";
 
     public Connection initConnection() {
 
@@ -29,7 +29,7 @@ public class DB {
 
         try {
 
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost/" + dbName, dbLogin, dbPassword);
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost/" + DBNAME, DBLOGIN, DBPASSWORD);
 
         } catch (SQLException e) {
 
@@ -41,26 +41,15 @@ public class DB {
 
     }
 
-    public void get() {
+    public ResultSet getData(String data, String table) {
 
         Connection connection = initConnection();
+        ResultSet result = null;
 
         try {
 
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM users");
-
-            while (result.next()) {
-
-                System.out.print(result.getInt("id") + " ");
-                System.out.print(result.getString("name") + " ");
-                System.out.print(result.getString("last_name") + " ");
-                System.out.print(result.getString("email") + " ");
-                System.out.print(result.getString("password") + " ");
-                System.out.print(result.getInt("group_id") + " ");
-                System.out.print("\n");
-
-            }
+            result = statement.executeQuery("SELECT " + data + " FROM " + table);
 
         } catch (SQLException e) {
 
@@ -68,6 +57,25 @@ public class DB {
             e.printStackTrace();
         }
 
+        return result;
     }
 
+    public PreparedStatement setData(String sql, String table) {
+
+        Connection connection = initConnection();
+        PreparedStatement ps = null;
+
+        try {
+
+            ps = connection.prepareStatement("INSERT INTO " + table + sql);
+
+        } catch (SQLException e) {
+
+            System.out.println("Проблема с запросом");
+            e.printStackTrace();
+
+        }
+
+        return ps;
+    }
 }

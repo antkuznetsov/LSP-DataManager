@@ -1,5 +1,6 @@
 package ru.innopolis.models;
 
+import ru.innopolis.conf.DB;
 import ru.innopolis.utils.JaxbParser;
 
 import javax.xml.bind.JAXBException;
@@ -8,6 +9,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.File;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,4 +51,36 @@ public class Courses {
         parser.saveObject(f, this);
     }
 
+    public void importCoursesDB() throws SQLException {
+        DB db = new DB();
+        ResultSet r = db.getData("*", "courses");
+        while (r.next()) {
+            Course course = new Course(
+                    r.getInt("id"),
+                    r.getString("title"),
+                    r.getString("description"),
+                    r.getInt("author_id")
+            );
+            courses.add(course);
+        }
+    }
+
+    public void exportCoursesDB() throws SQLException {
+        DB db = new DB();
+        PreparedStatement ps = db.setData(
+                "(id, title, description, author_id) VALUES (?, ?, ?, ?)",
+                "courses"
+        );
+
+        for (Course c : courses) {
+
+            ps.setInt(1, c.getId());
+            ps.setString(2, c.getTitle());
+            ps.setString(3, c.getDescription());
+            ps.setInt(4, c.getAuthorId());
+
+            ps.executeUpdate();
+
+        }
+    }
 }

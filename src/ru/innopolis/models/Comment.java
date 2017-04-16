@@ -14,20 +14,20 @@ public class Comment {
     private int id;
     private String content;
     private int authorId;
-    private int courseId;
+    private int lessonId;
 
-    public Comment(int id, String content, int authorId, int courseId) {
+    public Comment(int id, String content, int authorId, int lessonId) {
         this.id = id;
         this.content = content;
         this.authorId = authorId;
-        this.courseId = courseId;
+        this.lessonId = lessonId;
     }
 
     public Comment() {
         this.id = -1;
         this.content = null;
         this.authorId = -1;
-        this.courseId = -1;
+        this.lessonId = -1;
     }
 
     public int getId() {
@@ -54,12 +54,12 @@ public class Comment {
         this.authorId = authorId;
     }
 
-    public int getCourseId() {
-        return courseId;
+    public int getLessonId() {
+        return lessonId;
     }
 
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
+    public void setLessonId(int lessonId) {
+        this.lessonId = lessonId;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class Comment {
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", authorId=" + authorId +
-                ", courseId=" + courseId +
+                ", lessonId=" + lessonId +
                 '}';
     }
 }
