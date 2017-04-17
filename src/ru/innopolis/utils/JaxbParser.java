@@ -1,5 +1,9 @@
 package ru.innopolis.utils;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
+import ru.innopolis.Main;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -11,6 +15,12 @@ import java.io.File;
  */
 
 public class JaxbParser implements Parser {
+
+    private static final Logger LOGGER = Logger.getLogger(JaxbParser.class);
+
+    static {
+        DOMConfigurator.configure("log4j.xml");
+    }
 
     @Override
     public Object getObject(File file, Class c) throws JAXBException {

@@ -1,5 +1,8 @@
 package ru.innopolis.models;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -11,6 +14,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class User {
+
+    private static final Logger LOGGER = Logger.getLogger(User.class);
+
+    static {
+        DOMConfigurator.configure("log4j.xml");
+    }
+
     private int id;
     private String name;
     private String lastName;

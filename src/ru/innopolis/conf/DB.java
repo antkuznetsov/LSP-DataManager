@@ -1,5 +1,8 @@
 package ru.innopolis.conf;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
+
 import java.sql.*;
 
 /**
@@ -8,9 +11,15 @@ import java.sql.*;
 
 public class DB {
 
+    private static final Logger LOGGER = Logger.getLogger(DB.class);
+
+    static {
+        DOMConfigurator.configure("log4j.xml");
+    }
+
     private final String DBNAME = "lsp-1";
     private final String DBLOGIN = "postgres";
-    private final String DBPASSWORD = "786952na";
+    private final String DBPASSWORD = "656450";
 
     public Connection initConnection() {
 
@@ -22,8 +31,7 @@ public class DB {
 
         } catch (ClassNotFoundException e) {
 
-            System.out.println("Проблема с драйвером");
-            e.printStackTrace();
+            LOGGER.debug("Проблема с драйвером");
 
         }
 
@@ -33,8 +41,7 @@ public class DB {
 
         } catch (SQLException e) {
 
-            System.out.println("Проблема с соединением");
-            e.printStackTrace();
+            LOGGER.debug("Проблема с соединением");
 
         }
         return connection;
@@ -53,8 +60,8 @@ public class DB {
 
         } catch (SQLException e) {
 
-            System.out.println("Проблема с запросом");
-            e.printStackTrace();
+            LOGGER.debug("Проблема с запросом");
+
         }
 
         return result;
@@ -71,8 +78,7 @@ public class DB {
 
         } catch (SQLException e) {
 
-            System.out.println("Проблема с запросом");
-            e.printStackTrace();
+            LOGGER.debug("Проблема с запросом");
 
         }
 

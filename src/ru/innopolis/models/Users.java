@@ -1,5 +1,7 @@
 package ru.innopolis.models;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 import ru.innopolis.conf.DB;
 import ru.innopolis.utils.JaxbParser;
 
@@ -22,6 +24,12 @@ import java.util.List;
 @XmlRootElement(name = "users")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Users {
+
+    private static final Logger LOGGER = Logger.getLogger(Users.class);
+
+    static {
+        DOMConfigurator.configure("log4j.xml");
+    }
 
     @XmlElement(name = "user")
     private List<User> users;
