@@ -46,6 +46,11 @@ public class Lessons {
         return lessons;
     }
 
+    /**
+     * Импорт занятий из XML
+     * @return
+     * @throws JAXBException
+     */
     public Lessons importLessons() throws JAXBException {
         JaxbParser parser = new JaxbParser();
         File file = new File("data/" + this.getClass().getSimpleName() + ".xml");
@@ -53,12 +58,20 @@ public class Lessons {
         return tempLessons;
     }
 
+    /**
+     * Экспорт занятий в XML
+     * @throws JAXBException
+     */
     public void exportLessons() throws JAXBException {
         JaxbParser parser = new JaxbParser();
         File file = new File("data/" + this.getClass().getSimpleName() + ".xml");
         parser.saveObject(file, this);
     }
 
+    /**
+     * Импорт занятий из БД
+     * @throws SQLException
+     */
     public void importLessonsDB() throws SQLException {
         DB db = new DB();
         ResultSet r = db.getData("*", "lessons");
@@ -73,6 +86,10 @@ public class Lessons {
         }
     }
 
+    /**
+     * Экспорт занятий в БД
+     * @throws SQLException
+     */
     public void exportLessonsDB() throws SQLException {
         DB db = new DB();
         PreparedStatement ps = db.setData(

@@ -18,8 +18,8 @@ public class Main {
 
         Application app = new Application();
 
-        //app.XML2DB();
-        app.DB2XML();
+        app.XML2DB();
+        //app.DB2XML();
 
         System.out.println(app.getUsers());
         System.out.println(app.getCourses());

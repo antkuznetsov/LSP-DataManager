@@ -46,6 +46,11 @@ public class Users {
         return users;
     }
 
+    /**
+     * Импорт пользователей из XML
+     * @return
+     * @throws JAXBException
+     */
     public Users importUsers() throws JAXBException {
         JaxbParser parser = new JaxbParser();
         File file = new File("data/" + this.getClass().getSimpleName() + ".xml");
@@ -53,12 +58,20 @@ public class Users {
         return tempUsers;
     }
 
+    /**
+     * Экспорт пользователей в XML
+     * @throws JAXBException
+     */
     public void exportUsers() throws JAXBException {
         JaxbParser parser = new JaxbParser();
         File file = new File("data/" + this.getClass().getSimpleName() + ".xml");
         parser.saveObject(file, this);
     }
 
+    /**
+     * Импорт пользователей из БД
+     * @throws SQLException
+     */
     public void importUsersDB() throws SQLException {
         DB db = new DB();
         ResultSet r = db.getData("*", "users");
@@ -75,6 +88,10 @@ public class Users {
         }
     }
 
+    /**
+     * Экспорт пользователей в БД
+     * @throws SQLException
+     */
     public void exportUsersDB() throws SQLException {
         DB db = new DB();
         PreparedStatement ps = db.setData(

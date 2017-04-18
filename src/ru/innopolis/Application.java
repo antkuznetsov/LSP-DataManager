@@ -10,6 +10,9 @@ import java.util.List;
  * Created by Kuznetsov on 15/04/2017.
  */
 
+/**
+ * Класс реализующий приложение
+ */
 public class Application {
 
     private Users users = new Users();
@@ -53,6 +56,10 @@ public class Application {
         return this.comments.getComments();
     }
 
+    /**
+     * Импорт данных из XML
+     * @throws JAXBException
+     */
     public void importDataFromXML() throws JAXBException {
         this.users = this.users.importUsers();
         this.courses = this.courses.importCourses();
@@ -60,6 +67,10 @@ public class Application {
         this.comments = this.comments.importComments();
     }
 
+    /**
+     * Экспорт данных в XML
+     * @throws JAXBException
+     */
     public void exportDataToXML() throws JAXBException {
         this.users.exportUsers();
         this.courses.exportCourses();
@@ -67,6 +78,10 @@ public class Application {
         this.comments.exportComments();
     }
 
+    /**
+     * Импорт данных из БД
+     * @throws SQLException
+     */
     public void importDataFromDB() throws SQLException {
         this.users.importUsersDB();
         this.courses.importCoursesDB();
@@ -74,6 +89,10 @@ public class Application {
         this.comments.importCommentsDB();
     }
 
+    /**
+     * Экспорт данных в БД
+     * @throws SQLException
+     */
     public void exportDataToDB() throws SQLException {
         this.users.exportUsersDB();
         this.courses.exportCoursesDB();
@@ -81,11 +100,21 @@ public class Application {
         this.comments.exportCommentsDB();
     }
 
+    /**
+     * Конвертация XML–POJO–DB
+     * @throws JAXBException
+     * @throws SQLException
+     */
     public void XML2DB() throws JAXBException, SQLException {
         importDataFromXML();
         exportDataToDB();
     }
 
+    /**
+     * Конвертация DB–POJO–XML
+     * @throws JAXBException
+     * @throws SQLException
+     */
     public void DB2XML() throws JAXBException, SQLException {
         importDataFromDB();
         exportDataToXML();

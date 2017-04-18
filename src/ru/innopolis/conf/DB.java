@@ -9,6 +9,9 @@ import java.sql.*;
  * Created by Kuznetsov on 13/04/2017.
  */
 
+/**
+ * Класс для работы с БД
+ */
 public class DB {
 
     private static final Logger LOGGER = Logger.getLogger(DB.class);
@@ -21,6 +24,10 @@ public class DB {
     private final String DBLOGIN = "postgres";
     private final String DBPASSWORD = "656450";
 
+    /**
+     * Возвращает соединение с БД
+     * @return Connection
+     */
     public Connection initConnection() {
 
         Connection connection = null;
@@ -48,6 +55,12 @@ public class DB {
 
     }
 
+    /**
+     * Получение данных из БД
+     * @param data — список полей для выборки из БД
+     * @param table — название таблицы
+     * @return ResultSet
+     */
     public ResultSet getData(String data, String table) {
 
         Connection connection = initConnection();
@@ -67,6 +80,12 @@ public class DB {
         return result;
     }
 
+    /**
+     * Добавление данных в БД
+     * @param sql — выполняемый запрос
+     * @param table — название таблицы
+     * @return PreparedStatement
+     */
     public PreparedStatement setData(String sql, String table) {
 
         Connection connection = initConnection();

@@ -14,6 +14,9 @@ import java.io.File;
  * Created by Kuznetsov on 15/04/2017.
  */
 
+/**
+ * Класс для парсинга XML
+ */
 public class JaxbParser implements Parser {
 
     private static final Logger LOGGER = Logger.getLogger(JaxbParser.class);

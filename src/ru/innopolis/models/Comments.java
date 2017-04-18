@@ -47,6 +47,11 @@ public class Comments {
         return comments;
     }
 
+    /**
+     * Импорт комментариев из XML
+     * @return
+     * @throws JAXBException
+     */
     public Comments importComments() throws JAXBException {
         JaxbParser parser = new JaxbParser();
         File file = new File("data/" + this.getClass().getSimpleName() + ".xml");
@@ -54,12 +59,20 @@ public class Comments {
         return tempComments;
     }
 
+    /**
+     * Экспорт комментариев в XML
+     * @throws JAXBException
+     */
     public void exportComments() throws JAXBException {
         JaxbParser parser = new JaxbParser();
         File f = new File("data/" + this.getClass().getSimpleName() + ".xml");
         parser.saveObject(f, this);
     }
 
+    /**
+     * Импорт комментариев из БД
+     * @throws SQLException
+     */
     public void importCommentsDB() throws SQLException {
         DB db = new DB();
         ResultSet r = db.getData("*", "comments");
@@ -74,6 +87,10 @@ public class Comments {
         }
     }
 
+    /**
+     * Экспорт комментариев в БД
+     * @throws SQLException
+     */
     public void exportCommentsDB() throws SQLException {
         DB db = new DB();
         PreparedStatement ps = db.setData(
